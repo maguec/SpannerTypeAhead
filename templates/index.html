@@ -1,0 +1,62 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+   utils module here to automatically render Flask's flashed messages in a
+   bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block scripts %}
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    function log( message ) {
+      $( "<div>" ).text( message ).prependTo( "#log" );
+      $( "#log" ).scrollTop( 0 );
+    }
+
+    $( "#station" ).autocomplete({
+      source: "/autocomplete",
+      minLength: 2,
+      select: function( event, ui ) {
+        log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+      }
+    });
+  } );
+  </script>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+  {%- with messages = get_flashed_messages(with_categories=True) %}
+  {%- if messages %}
+    <div class="row">
+      <div class="col-md-12">
+        {{utils.flashed_messages(messages)}}
+      </div>
+    </div>
+  {%- endif %}
+  {%- endwith %}
+    <div class="jumbotron">
+      <h1>Station Finder</h1>
+      <form action = "/display" method = "POST">
+  <div class="form-group">
+    <label for="station">Search Stations</label>
+    <input id="station" class="form-control" name="station">
+  </div>
+  <div class="form-group">
+    <br><br>
+    <p><input type = "submit" value = "submit" /></p>
+  </div>
+</form>
+      <p>Type ahead search some stations</p>
+    </div>
+   </div>
+{%- endblock %}
