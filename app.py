@@ -28,7 +28,7 @@ def station_data(name):
 
 def fts(name):
     suggest = []
-    query = "SELECT name FROM Station WHERE SEARCH_NGRAMS(name_Tokens,'{}')".format(name)
+    query = "SELECT name FROM Station WHERE SEARCH_NGRAMS(name_Tokens,'{}') ORDER BY SCORE_NGRAMS(name_Tokens, '{}' ) DESC".format(name, name)
     with client.snapshot() as snapshot:
         results = snapshot.execute_sql(query)
         for r in results:
