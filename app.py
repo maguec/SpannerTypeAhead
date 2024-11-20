@@ -4,8 +4,6 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from google.cloud import spanner
 import json
-from collections import namedtuple
-from datetime import datetime
 
 app = Flask(
     __name__,
