@@ -47,7 +47,7 @@ def display():
 @app.route("/autocomplete")
 def autocomplete():
     name = request.args.get('term')
-    suggest = fts(name)
+    suggest = fts(name.lower())
     return(
         json.dumps(
             [{'value': item,
