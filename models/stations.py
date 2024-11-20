@@ -8,12 +8,14 @@ import csv
 class Station:
     id: int
     name: str
+    lc: str
     latitude: float
     longitude: float
 
     def __init__(self, station):
         self.id = int(station["id"])
         self.name = station["station"]
+        self.lc = station["station"].lower()
         self.latitude = float(station["latitude"])
         self.longitude = float(station["longitude"])
 
