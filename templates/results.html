@@ -8,7 +8,7 @@
 {% import "bootstrap/utils.html" as utils %}
 
 {% block head %}
-  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
 {%- endblock %}
 
 {# Inside the ``content`` is where you should place most of your own stuff.
@@ -27,12 +27,12 @@
   {%- endwith %}
     <div class="jumbotron">
       <h1>Station Information </h1>
-          <table class="table table-dark"  width="50%">
+          <table class="table table-light"  width="50%">
             <tbody>
               <tr><td>ID</td><td>{{result[0]}}</td></tr>
               <tr><td>Name</td><td>{{result[1]}}</td></tr>
               <tr><td>Long</td><td>{{result[4]}}</td></tr>
-              <tr><td>Lat</td><td>{{result[3]}}<td></tr>
+              <tr><td>Lat</td><td>{{result[3]}}</td></tr>
             </tbody>
           </table>
      </div>
