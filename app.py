@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_bootstrap import Bootstrap
 from google.cloud import spanner
 import json
@@ -37,6 +37,10 @@ def fts(name):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/favicon.ico")
+def favicon():
+    return redirect("http://blog.mague.com/favicon.ico", code=302)
 
 @app.route('/display', methods = ['POST'])
 def display():
