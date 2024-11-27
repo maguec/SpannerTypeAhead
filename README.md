@@ -25,3 +25,18 @@ pip install -r requirements.txt
 ```bash
 ./app.py
 ```
+
+## Some Queries
+
+```sql
+SELECT name FROM Station WHERE SEARCH_NGRAMS(name_Tokens,'bon') ORDER BY SCORE_NGRAMS(name_Tokens, 'bon' ) DESC
+```
+
+## Snippets
+
+This will high light for Full Text and Substring  search so you can see what exactly matched
+
+```sql
+SELECT name, SNIPPET(name, "Bond") FROM Station WHERE SEARCH(name_FullText,'Bond')
+SELECT name, SNIPPET(name, "Bond") FROM Station WHERE SEARCH_SUBSTRING(name_SubString,'Bond')
+```
