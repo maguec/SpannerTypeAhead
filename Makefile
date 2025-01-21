@@ -10,7 +10,7 @@ loadschema: ## Load Schema onto Spanner
 	@gcloud spanner databases create typeaheaddb --instance  typeahead --ddl-file=Schema.sql
 
 instancecreate: ## Spin up a single node Spanner instance
-	@gcloud spanner instances create typeahead --description="typeahead Database" --config=regional-us-west1 --edition=ENTERPRISE --processing-units=100
+	@gcloud spanner instances create typeahead --description="typeahead Database" --config=regional-us-west1 --edition=ENTERPRISE --processing-units=100 --default-backup-schedule-type=NONE
 
 instancedelete: ## Shutdown the Spanner instance
 	@gcloud spanner instances delete typeahead
